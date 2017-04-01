@@ -21,5 +21,6 @@ This app will show all files inside folder using Javascript Generator & yield
 
 This app will show data from server in graphqlclient app phone
 
-## Licence
+## License
 
+MIT
