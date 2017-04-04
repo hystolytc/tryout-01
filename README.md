@@ -32,6 +32,24 @@ This app will show chat from server in websocketclient app phone
 4. open index.android.js and go to getData method, then inside it, change ip address in fetch method "http://192.168.30.90" with your ip, then save it. (this test was done in real phone not in emulator)
 5. run command `react-native run-android` wait until its finish then run `react-native start`
 
+**Data Schema**
+```
+    type Query {
+    name: String
+    nationality: String
+  }
+```
+
+**Sample Data**
+```json
+{
+  "data": {
+    "name": "Ayyub",
+    "nationality": "Indonesia"
+  }
+}
+
+```
 This app will show data from server in graphqlclient app phone
 
 ## License
