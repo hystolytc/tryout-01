@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -21,32 +15,27 @@ export default class websocket extends Component {
 
   constructor(props){
     super(props)
-
-    this.socket = io('http://localhost:7654');
     this.state = {
-      text: null
+      serverChat: 'Wait for server info...'
     }
-
   }
 
-  handleChange(event){
-    this.setState({
-      text: event.nativeEvent.text
-    });
-
+  componentDidMount() {
+    this.socket = io('http://192.168.30.90:7654');
+    this.socket.on('message', message => {
+      this.setState({serverChat: message})
+    })
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-            value={this.state.text}
-            onChange={this.handleChange.bind(this)} />
-        <TouchableHighlight onPress={() => {
-          this.socket.emit('text', this.state.text)
-          this.setState({text: ''})
-          }}>
-        <Text>test</Text></TouchableHighlight>
+        <Text style={styles.welcome}>
+          "This data below obtained from websocket server"
+        </Text>
+        <Text style={styles.instructions}>
+          Server Message : "{this.state.serverChat}"
+        </Text>
       </View>
     );
   }
@@ -63,6 +52,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    color: '#ff9800'
   },
   instructions: {
     textAlign: 'center',

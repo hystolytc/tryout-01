@@ -2,15 +2,9 @@ let app = require('express')()
 let http = require('http').Server(app)
 let io = require('socket.io')(http)
 
-// app.get('/', (req,res) => {
-//     res.sendFile(__dirname + '/index.html');
-// })
-
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    console.log('text from phone '+ msg)
-    // io.emit('chat message', msg);
-  });
+    console.log(`A client with id : [${socket.id}] has been jinedjoined the chat` )
+    io.emit('message', 'you successfully join to the chat');
 });
 
 http.listen(7654, () => {
