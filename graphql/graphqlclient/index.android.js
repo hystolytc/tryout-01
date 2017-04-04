@@ -20,7 +20,7 @@ export default class graphqlclient extends Component {
   }
 
   getData() {
-    fetch('http://192.168.40.49:7654/graphql?query={name}')
+    fetch('http://192.168.30.90:7654/graphql?query={name nationality}')
     .then(resp => {
       let response = JSON.parse(resp._bodyText)
       this.setState({ value: response.data });
@@ -32,10 +32,13 @@ export default class graphqlclient extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Data Response from Server
+          Name and Nationality data below obtained from graphql
         </Text>
         <Text style={styles.instructions}>
-          Response name =  {this.state.value.name}
+          Hello, My Name is : {this.state.value.name}
+        </Text>
+        <Text style={styles.instructions}>
+          I am from : {this.state.value.nationality}
         </Text>
       </View>
     );
@@ -50,9 +53,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   welcome: {
-    fontSize: 20,
+    fontSize: 25,
     textAlign: 'center',
     margin: 10,
+    color: '#ff9800'
   },
   instructions: {
     textAlign: 'center',
