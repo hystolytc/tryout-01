@@ -35,9 +35,9 @@ This app will show chat from server in websocketclient app phone
 **Data Schema**
 ```
     type Query {
-    name: String
-    nationality: String
-  }
+        name: String
+        nationality: String
+    }
 ```
 
 **Sample Data**
